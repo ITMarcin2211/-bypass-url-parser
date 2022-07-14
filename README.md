@@ -1,15 +1,20 @@
-Bypass Url Parser
-Tool that tests MANY url bypasses to reach a 40X protected page.
+# Bypass Url Parser
 
-If you wonder why this code is nothing but a dirty curl wrapper, here's why:
+Tool that tests `MANY` url bypasses to reach a `40X protected page`.
 
-Most of the python requests do url/path/parameter encoding/decoding, and I hate this.
-If I submit raw chars, I want raw chars to be sent.
-If I send a weird path, I want it weird, not normalized.
-This is surprisingly hard to achieve in python without losing all of the lib goodies like parsing, ssl/tls encapsulation and so on.
-So, be like me, use curl as a backend, it's gonna be just fine.
+If you wonder why this code is `nothing but a dirty curl wrapper`, here's why:
 
-Setup for bypass.py
+- Most of the python requests do url/path/parameter encoding/decoding, and I hate this.
+- If I submit raw chars, I want raw chars to be sent.
+- If I send a weird path, I want it weird, not normalized.
+
+This is `surprisingly hard` to achieve in python without losing all of the lib goodies like parsing, ssl/tls encapsulation and so on. \
+So, be like me, use `curl as a backend`, it's gonna be just fine.
+
+
+## Setup for bypass.py
+
+```bash
 # Deps
 sudo apt install -y bat curl virtualenv python3
 # Tool
@@ -17,7 +22,12 @@ virtualenv -p python3 .py3
 source .py3/bin/activate
 pip install -r requirements.txt
 ./bypass-url-parser.py --url "http://127.0.0.1/juicy_403_endpoint/"
-Usage
+```
+
+
+## Usage
+
+```
 Bypass Url Parser, made with love by @TheLaluka
 A tool that tests MANY url bypasses to reach a 40X protected page.
 
@@ -40,7 +50,12 @@ Options:
 Example:
     ./bypass-url-parser.py --url "http://127.0.0.1/juicy_403_endpoint/" --spoofip 8.8.8.8 --debug
     ./bypass-url-parser.py --url "http://127.0.0.1/juicy_403_endpoint/" --threads 30 --timeout 5 --header "Cookie: me_iz=damin" --header "Waf: bypazzzzz"
-Expected result
+```
+
+
+## Expected result
+
+```
 2022-05-10 15:54:03 work bup[738125] INFO === Config ===
 2022-05-10 15:54:03 work bup[738125] INFO debug: False
 2022-05-10 15:54:03 work bup[738125] INFO url: http://thinkloveshare.com/api/jolokia/list
@@ -117,3 +132,4 @@ Expected result
    76:  821 - bfe5f92861f949e44b355ee22574194a.html
 2022-05-10 15:54:10 work bup[738125] INFO Also, inspect them manually with batcat:
 echo /tmp/tmp48drf_ie-bypass-url-parser/{850a2bd214c68f582aaac1c84c702b5d.html,219145da181c48fea603aab3097d8201.html,309b8397d07f618ec07541c418979a84.html,9a1304f66bfee2130b34258635d50171.html,b61052875693afa4b86d39321d4170b4.html,6fb5c59f5c29d23e407d6f041523a2bb.html,045d36e3cfba7f6cbb7e657fc6cf1125.html,9787a734c56b37f7bf5d78aaee43c55d.html,c5663aedf1036c950a5d83bd83c8e4e7.html,7857d3d4a9bc8bf69278bf43c4918909.html,011ca570bdf2e5babcf4f99c4cd84126.html,6d4b61258386f744a388d402a5f11d03.html,2f26cd3ba49e023dbda4453e5fd89431.html,bfe5f92861f949e44b355ee22574194a.html} | xargs bat
+```
